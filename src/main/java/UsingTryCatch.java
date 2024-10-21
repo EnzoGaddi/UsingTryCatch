@@ -8,25 +8,40 @@ import java.util.Scanner;
 
 public class UsingTryCatch {
     public static void main(String[] args){
+
         System.out.println("Please enter a number between 0 - 9 :");
         Scanner myscan = new Scanner(System.in);
 
-        // Read user input as a String
-        String input = myscan.nextLine();
+        try {
+            int myNum = -1;
 
-        // Parse the input to an integer
-        int myNum = Integer.parseInt(input);
+            while (myNum < 0 || myNum > 9) {
+                // Read user input as a String
+                String input = myscan.nextLine();
 
-        // Check if the number is between 0 and 9
-        if (myNum >= 0 && myNum <= 9) {
-            System.out.println("You entered " + myNum);
+                // Parse the input to an integer
+
+                try {
+                    myNum = Integer.parseInt(input);
+                    // Check if the number is between 0 and 9
+                    if (myNum >= 0 && myNum <= 9) {
+                        System.out.println("You entered " + myNum);
+                    } else {
+                        System.out.println("Not valid ");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Try again! " + e.getMessage());
+                }
+            }
+          }
+        finally
+        {
+            myscan.close();
         }
-        else {
-            System.out.println("Not a valid ");
         }
     }
 
-}
+
 
 //try{}
 //catch(ArithmeticException ae)
